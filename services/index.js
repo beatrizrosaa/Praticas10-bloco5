@@ -16,6 +16,13 @@ app.get('/token', (req, res) => {
   res.json({ token });
 });
 
+app.get('/calc', (req, res) => {
+    const expr = req.query.expr || '2+2';
+    // Insecure eval
+    const result = eval(expr);
+    res.json({ result });
+});
+
 // Inicia o servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
